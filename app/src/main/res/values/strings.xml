@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Projet forum</string>
+    <string name="forumName">Forum</string>
+    <string name="welcomeName">Bienvenue</string>
+    <string name="registerName">Enregistrer</string>
+    <string name="loginName">Se connecter</string>
+    <string name="exitName">Quitter</string>
+    <string name="textMenuName">Veuillez choisir une option :</string>
+    <string name="connectionName">Connexion</string>
+    <string name="pseudoName">pseudo</string>
+    <string name="passwordName">Mot de passe</string>
+    <string name="validateName">Valider</string>
+    <string name="backName">Retour</string>
+    <string name="confirmName">Confirmer</string>
+    <string name="menName">Homme</string>
+    <string name="womenName">Femme</string>
+    <string name="cityName">Ville</string>
+    <string name="toastErrorName">Une erreur est survenue !</string>
+    <string name="toastErrorPseudoExistName">Pseudo déjà présent !</string>
+    <string name="toastErrorTitleExistName">Titre déjà présent !</string>
+    <string name="toastErrorFormName">Veuillez remplir tous les champs !</string>
+    <string name="toastErrorPasswordName">Mot de passe différent !</string>
+    <string name="toastErrorCharacterNumberName">Nombre de caractères insuffisant !</string>
+    <string name="toastErrorPasswordRegexName">Veuillez entrer un mot de passe valide !</string>
+    <string name="toastErrorRegexName">Veuillez entrer un nom correct !</string>
+    <string name="toastErrorConnectionName">Erreur de connexion !</string>
+    <string name="toastErrorSqlLiteName">Sqlite3 non supporté sur serveur !</string>
+    <string name="toastErrorServerName">Erreur interne au serveur !</string>
+    <string name="toastErrorBddNotFoundName">Base de donnée non trouvée !</string>
+    <string name="toastValidateName">Enregistrement réussi !</string>
+    <string name="actionUserTitleName"> Menu</string>
+    <string name="helloName">Bonjour :</string>
+    <string name="addSubjectName">Ajouter sujet</string>
+    <string name="listSubjectName">Voir sujet</string>
+    <string name="disconnectName">Deconnexion</string>
+    <string name="subjectTitleName">Sujet</string>
+    <string name="titleName">Titre</string>
+    <string name="messageName">Votre message...</string>
+    <string name="subtitleDisplayName">Veuillez choisir un sujet :</string>
+    <string name="listSubjectEmptyName">Aucun sujet disponible !</string>
+    <string name="messageTitleName">Message</string>
+    <string name="messageEmptyName">Aucun message !</string>
+    <string name="authorName">AUTEUR : </string>
+    <string name="subjectName">SUJET : </string>
+    <string name="spinnerCityName">Choix ville : </string>
+    <string-array name="listOfCity">
+        <item>Charleroi</item>
+        <item>Namur</item>
+        <item>Louvain</item>
+        <item>Tournai</item>
+        <item>Ypres</item>
+        <item>Mons</item>
+    </string-array>
+</resources>

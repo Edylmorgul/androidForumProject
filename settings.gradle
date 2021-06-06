@@ -1,0 +1,3 @@
+include ':ojdbc14'
+include ':app'
+rootProject.name = "projectForum"

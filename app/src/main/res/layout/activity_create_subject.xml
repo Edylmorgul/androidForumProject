@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/colorTitle"
+            android:gravity="center_horizontal"
+            android:text="@string/subjectTitleName"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/titleTextSubject"
+            android:layout_width="300dp"
+            android:layout_height="56dp"
+            android:autofillHints=""
+            android:hint="@string/titleName"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="136dp" />
+
+        <EditText
+            android:id="@+id/messageTextSubject"
+            android:layout_width="300dp"
+            android:layout_height="178dp"
+            android:autofillHints=""
+            android:hint="@string/messageName"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="10"
+            android:minLines="6"
+            android:scrollbars="vertical"
+            tools:layout_editor_absoluteX="179dp"
+            tools:layout_editor_absoluteY="261dp" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow4"
+            android:layout_width="339dp"
+            android:layout_height="416dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:orientation="vertical"
+            app:constraint_referenced_ids="titleTextSubject,messageTextSubject"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="360dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/colorBackgroundElement"
+            app:constraint_referenced_ids="btnValidateSubject,btnBackSubject"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flow4" />
+
+        <Button
+            android:id="@+id/btnValidateSubject"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="@string/validateName"
+            tools:layout_editor_absoluteX="76dp"
+            tools:layout_editor_absoluteY="604dp" />
+
+        <Button
+            android:id="@+id/btnBackSubject"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="@string/backName"
+            tools:layout_editor_absoluteX="211dp"
+            tools:layout_editor_absoluteY="604dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

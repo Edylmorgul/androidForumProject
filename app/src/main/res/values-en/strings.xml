@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Forum project</string>
+    <string name="forumName">Forum</string>
+    <string name="welcomeName">Welcome</string>
+    <string name="registerName">Register</string>
+    <string name="loginName">Log In</string>
+    <string name="exitName">Quit</string>
+    <string name="textMenuName">Select option :</string>
+    <string name="connectionName">Connection</string>
+    <string name="pseudoName">pseudo</string>
+    <string name="passwordName">password</string>
+    <string name="validateName">Validate</string>
+    <string name="backName">Back</string>
+    <string name="confirmName">Confirm</string>
+    <string name="menName">Men</string>
+    <string name="womenName">Women</string>
+    <string name="cityName">City</string>
+    <string name="toastErrorName">Error !</string>
+    <string name="toastErrorPseudoExistName">Existing pseudo !</string>
+    <string name="toastErrorTitleExistName">Existing title !</string>
+    <string name="toastErrorFormName">Empty fields !</string>
+    <string name="toastErrorPasswordName">Password is not the same !</string>
+    <string name="toastErrorCharacterNumberName">Not enough characters !</string>
+    <string name="toastErrorPasswordRegexName">Invalid password !</string>
+    <string name="toastErrorRegexName">Invalid name !</string>
+    <string name="toastErrorConnectionName">connection error !</string>
+    <string name="toastErrorSqlLiteName">Sqlite3 not supported !</string>
+    <string name="toastErrorServerName">Internal server error !</string>
+    <string name="toastErrorBddNotFoundName">Database not found !</string>
+    <string name="toastValidateName">registered successfully !</string>
+    <string name="actionUserTitleName"> Menu</string>
+    <string name="helloName">Hello :</string>
+    <string name="addSubjectName">Add subject</string>
+    <string name="listSubjectName">See subject</string>
+    <string name="disconnectName">Disconnect</string>
+    <string name="subjectTitleName">Subject</string>
+    <string name="titleName">Title</string>
+    <string name="messageName">Your message...</string>
+    <string name="subtitleDisplayName">Select a subject :</string>
+    <string name="listSubjectEmptyName">There is no subject available !</string>
+    <string name="messageTitleName">Message</string>
+    <string name="messageEmptyName">No message !</string>
+    <string name="authorName">AUTHOR : </string>
+    <string name="subjectName">SUBJECT : </string>
+    <string name="spinnerCityName">City choice : </string>
+</resources>
