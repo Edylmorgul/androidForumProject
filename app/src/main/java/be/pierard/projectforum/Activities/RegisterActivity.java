@@ -8,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -16,22 +15,19 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import be.pierard.projectforum.Async.DisplayCityAsync;
 import be.pierard.projectforum.Async.RegisterAsync;
-import be.pierard.projectforum.Data.Sujet;
-import be.pierard.projectforum.Data.Utilisateur;
-import be.pierard.projectforum.Data.Ville;
+import be.pierard.projectforum.Data.User;
+import be.pierard.projectforum.Data.City;
 import be.pierard.projectforum.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
     // Data
-    private Utilisateur user;
-    private Ville city;
-    public List<Ville> list;
+    private User user;
+    private City city;
+    public List<City> list;
 
     // Valider inscription
     private View.OnClickListener registerListener = new View.OnClickListener(){
@@ -109,8 +105,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 // Création objets
                 else{
-                    city = new Ville(nameCity);
-                    user = new Utilisateur(pseudo,password,sex);
+                    //city = new City(nameCity);
+                    //user = new User(pseudo,password,sex);
                     // Tâche asynchrone instancié dans le bouton ==> Execute va exécuter les méthodes du RegisterAsync
                     new RegisterAsync(RegisterActivity.this,city).execute(user);
                 }
@@ -163,7 +159,7 @@ public class RegisterActivity extends AppCompatActivity {
     };
 
     // Recu reponse RegisterAsync
-    public void response(Utilisateur param, int code) {
+    public void response(User param, int code) {
         switch (code){
             case 1 :
                 generateToast(getResources().getString(R.string.toastErrorName));

@@ -12,15 +12,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import be.pierard.projectforum.Async.CreateSubjectAsync;
-import be.pierard.projectforum.Data.Sujet;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.Subject;
+import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
 
 public class CreateSubjectActivity extends AppCompatActivity {
 
     // Data
-    private Utilisateur user = new Utilisateur();
-    private Sujet subject;
+    private User user = new User();
+    private Subject subject;
 
     // Création du sujet
     private View.OnClickListener createSubjectLitener = new View.OnClickListener(){
@@ -55,7 +55,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
 
                 // Creation objet
                 else{
-                    subject = new Sujet(title,content);
+                    subject = new Subject(title,content);
                     new CreateSubjectAsync(CreateSubjectActivity.this, user).execute(subject);
                 }
             }
@@ -79,7 +79,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
     };
 
     // Recu reponse CreateSubjectAsync
-    public void response(Sujet param, int code) {
+    public void response(Subject param, int code) {
         switch (code){
             case 1 :
                 generateToast(getResources().getString(R.string.toastErrorName));
@@ -135,7 +135,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
 
         // Récupération informations activitée précédente
         Intent intentRecup = getIntent();
-        user = (Utilisateur) intentRecup.getSerializableExtra("Object");
+        user = (User) intentRecup.getSerializableExtra("Object");
 
         Button btnValidate;
         btnValidate = (Button) findViewById(R.id.btnValidateSubject);

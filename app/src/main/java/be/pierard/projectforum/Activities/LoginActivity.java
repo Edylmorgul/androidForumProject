@@ -10,37 +10,36 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import be.pierard.projectforum.Async.LoginAsync;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     // Data
-    private Utilisateur user;
+    private User user;
 
     // Validation connexion
     private View.OnClickListener connectionListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
             EditText txt;
-            String pseudo;
+            String email;
             String password;
 
             // Récupération des champs
-            txt = findViewById(R.id.pseudoTextLogin);
-            pseudo = txt.getText().toString();
+            txt = findViewById(R.id.emailTextLogin);
+            email = txt.getText().toString();
             txt = findViewById(R.id.passwordTextLogin);
             password = txt.getText().toString();
             try{
                 // Test champs vides
-                if(pseudo == null || pseudo.equals("") || password == null || password.equals("")){
+                if(email.isEmpty() || password.isEmpty()){
                     generateToast(getResources().getString(R.string.toastErrorFormName));
                 }
 
                 // Creation objet
                 else{
-                    user = new Utilisateur(pseudo, password);
-                    new LoginAsync(LoginActivity.this).execute(user);
+                    new LoginAsync(LoginActivity.this).execute(email, password);
                 }
             }
             catch (Exception e){
@@ -62,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
     };
 
     // Recu reponse LoginAsync
-    public void response(Utilisateur param, int code) {
+    public void response(User param, int code) {
         switch (code){
             case 1 :
                 generateToast(getResources().getString(R.string.toastErrorName));

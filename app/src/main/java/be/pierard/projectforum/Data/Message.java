@@ -17,7 +17,7 @@ public class Message implements Serializable, Comparable<Message> {
     private String content;
     private Date dateMessage;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-    private Utilisateur user; // Pour liste des messages triés avec auteur
+    private User user; // Pour liste des messages triés avec auteur
 
     // Constructor
     public Message(){
@@ -27,7 +27,7 @@ public class Message implements Serializable, Comparable<Message> {
     public Message(String content, Date dateMessage){
         this.content = content;
         this.dateMessage = dateMessage;
-        user = new Utilisateur();
+        user = new User();
     }
 
     // GET/SET
@@ -55,9 +55,9 @@ public class Message implements Serializable, Comparable<Message> {
         this.dateMessage = dateMessage;
     }
 
-    public Utilisateur getUser(){return user;}
+    public User getUser(){return user;}
 
-    public void setUser(Utilisateur user){this.user = user;}
+    public void setUser(User user){this.user = user;}
 
     // Methods
     public List<Message> readJsonList(JSONArray array) throws JSONException {
@@ -67,7 +67,7 @@ public class Message implements Serializable, Comparable<Message> {
         for(int i=0 ; i<array.length(); i++){
             JSONObject obj = array.getJSONObject(i);
             Message message = new Message();
-            Utilisateur user = new Utilisateur();
+            User user = new User();
             user.setPseudo(obj.getString("pseudo"));
             user.setPassword(obj.getString("motDePasse"));
             user.setSex(obj.getString("sexe"));

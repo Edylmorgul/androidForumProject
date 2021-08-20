@@ -9,13 +9,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
 
 public class ActionUserActivity extends AppCompatActivity {
 
     // Data
-    private Utilisateur user = new Utilisateur();
+    private User user = new User();
 
     // Vers creation d'un sujet
     private View.OnClickListener createSubjectListener = v -> {
@@ -70,7 +70,7 @@ public class ActionUserActivity extends AppCompatActivity {
 
         // Récupération informations activitée précédente
         Intent intentRecup = getIntent();
-        user = (Utilisateur) intentRecup.getSerializableExtra("Object");
+        user = (User) intentRecup.getSerializableExtra("Object");
         TextView txtName = findViewById(R.id.txtNameUser);
         txtName.setText(user.getPseudo());
 

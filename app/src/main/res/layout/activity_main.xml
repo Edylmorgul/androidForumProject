@@ -12,54 +12,45 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            style="@style/CustomTitle"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:background="@color/colorTitle"
-            android:gravity="center_horizontal"
             android:text="@string/welcomeName"
-            android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="233dp"
-            android:layout_height="36dp"
+            style="@style/CustomSubTitle"
             android:layout_marginTop="32dp"
             android:text="@string/textMenuName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.308"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:gravity="center_horizontal" />
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            style="@style/CustomButton"
             android:text="@string/loginName"
             tools:layout_editor_absoluteX="144dp"
             tools:layout_editor_absoluteY="473dp" />
 
         <Button
             android:id="@+id/btnExit"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            style="@style/CustomButton"
             android:text="@string/exitName"
             tools:layout_editor_absoluteX="128dp"
             tools:layout_editor_absoluteY="358dp" />
 
         <Button
             android:id="@+id/btnRegister"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            style="@style/CustomButton"
             android:text="@string/registerName"
             tools:layout_editor_absoluteX="148dp"
             tools:layout_editor_absoluteY="241dp" />

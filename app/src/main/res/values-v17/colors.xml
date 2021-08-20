@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTitle">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomSubTitle">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+</resources>

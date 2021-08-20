@@ -14,10 +14,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.RegisterActivity;
-import be.pierard.projectforum.Data.Utilisateur;
-import be.pierard.projectforum.Data.Ville;
+import be.pierard.projectforum.Data.City;
 
-public class DisplayCityAsync extends AsyncTask<Void, Void, List<Ville>> {
+public class DisplayCityAsync extends AsyncTask<Void, Void, List<City>> {
 
     // Data
     private int code;
@@ -34,13 +33,13 @@ public class DisplayCityAsync extends AsyncTask<Void, Void, List<Ville>> {
     }
 
     @Override
-    protected List<Ville> doInBackground(Void... params) {
+    protected List<City> doInBackground(Void... params) {
         String uriBase = BaseUrl.URL;
         String rpc = "getAllCity.php";
         String uri = uriBase +rpc;
         String reponse ="";
-        List<Ville> list = new LinkedList<>();
-        Ville city = new Ville();
+        List<City> list = new LinkedList<>();
+        City city = new City();
         try{
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -75,7 +74,7 @@ public class DisplayCityAsync extends AsyncTask<Void, Void, List<Ville>> {
         }
         return list;
     }
-    protected void onPostExecute(List<Ville> params) {
+    protected void onPostExecute(List<City> params) {
         this.activity.list = params;
         this.activity.response(code);
     }

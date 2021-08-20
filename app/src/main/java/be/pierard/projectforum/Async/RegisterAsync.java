@@ -14,18 +14,18 @@ import java.net.URL;
 import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.RegisterActivity;
-import be.pierard.projectforum.Data.Utilisateur;
-import be.pierard.projectforum.Data.Ville;
+import be.pierard.projectforum.Data.User;
+import be.pierard.projectforum.Data.City;
 
-public class RegisterAsync extends AsyncTask<Utilisateur, Void, Utilisateur> { //Type donnée entrée pour appel X, Type unité de progression(Souvent entier) Y, Type résultat de retour appel Z
+public class RegisterAsync extends AsyncTask<User, Void, User> { //Type donnée entrée pour appel X, Type unité de progression(Souvent entier) Y, Type résultat de retour appel Z
 
     // Data
-    private Ville city;
+    private City city;
     private RegisterActivity activity;
     private int code;
 
     // Constructor
-    public RegisterAsync(RegisterActivity activity, Ville city){
+    public RegisterAsync(RegisterActivity activity, City city){
         this.activity = activity;
         this.city = city;
     }
@@ -39,11 +39,11 @@ public class RegisterAsync extends AsyncTask<Utilisateur, Void, Utilisateur> { /
     // Appel de procédure distante via HTTP (traitement long) ==> Toutes opérations qui prend du temps à l'exécution
     // Utilisateur... ==> Un nombre indéfini d'utilisateur reçus
     @Override
-    protected Utilisateur doInBackground(Utilisateur... params) { // Donnée paramètre methode  s'allie au 1er type de données asyncTask X
+    protected User doInBackground(User... params) { // Donnée paramètre methode  s'allie au 1er type de données asyncTask X
         String baseUrl = BaseUrl.URL;
         String rpc = "createUser.php";
         String uri = baseUrl + rpc;
-        Utilisateur user = params[0]; // 1er élément transmis(comme tableau)
+        User user = params[0]; // 1er élément transmis(comme tableau)
         String reponse = "";
 
         try{
@@ -88,7 +88,12 @@ public class RegisterAsync extends AsyncTask<Utilisateur, Void, Utilisateur> { /
     }
     // post-traitement de l'appel
     // Envoi de reponse post ==> Code
-    protected void onPostExecute(Utilisateur params) { // S'allie au 3e type de données asyncTask Z
+    protected void onPostExecute(User params) { // S'allie au 3e type de données asyncTask Z
             this.activity.response(params, code);
     }
 }
+
+/*onPreExecute()  est appelée et permet de préparer la tâche, par exemple l’interface graphique (animation d’attente, notification).
+W doInBackground(U)  est ensuite appelée et s’exécute dans un thread secondaire. Elle reçoit le paramètre d’input de la tâche et à la fin, retourne un résultat de type W.
+onPostExecute(W)  est enfin appelée, et s’exécute dans le thread principal : elle permet d’afficher le résultat par exemple.
+onProgressUpdate(V...)  permet de gérer les notifications de progression de la tâche.*/

@@ -8,33 +8,30 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Utilisateur implements Serializable {
+public class User implements Serializable {
 
     // Data
-    private int id;
-    private String pseudo;
-    private String password;
-    private String sex;
-    private List<Sujet> listSubject;
-    private List<Message> listMessage;
+    protected int id;
+    protected String pseudo;
+    protected String password;
+    protected String sex;
+    protected String email;
+    protected int active = 1;
+    protected List<Subject> listSubject;
+    protected List<Message> listMessage;
 
     // Constructor
-    public Utilisateur(){
+    public User(){
 
     }
 
-    public Utilisateur(String pseudo, String password){
-        this.pseudo = pseudo;
-        this.password = password;
-        listSubject = new LinkedList<Sujet>();
-        listMessage = new LinkedList<Message>();
-    }
-
-    public Utilisateur(String pseudo, String password, String sex){
+    public User(String pseudo, String password, String sex, String email, int active){
         this.pseudo = pseudo;
         this.password = password;
         this.sex = sex;
-        listSubject = new LinkedList<Sujet>();
+        this.email = email;
+        this.active = active;
+        listSubject = new LinkedList<Subject>();
         listMessage = new LinkedList<Message>();
     }
 
@@ -71,11 +68,19 @@ public class Utilisateur implements Serializable {
         this.sex = sex;
     }
 
-    public List<Sujet> getListSujet(){
+    public String getEmail(){return email; }
+
+    public void setEmail(String email) {this.email = email; }
+
+    public int getActive(){ return active; }
+
+    public void setActive(int active) {this.active = active; }
+
+    public List<Subject> getListSujet(){
         return listSubject;
     }
 
-    public void setListSubject(List<Sujet> listSubject){
+    public void setListSubject(List<Subject> listSubject){
         this.listSubject = listSubject;
     }
 
@@ -88,18 +93,20 @@ public class Utilisateur implements Serializable {
     }
 
     // Methods
-    public List<Utilisateur> readJsonList(JSONArray array) throws JSONException{
-        List<Utilisateur> list = new LinkedList<Utilisateur>();
+    public List<User> readJsonList(JSONArray array) throws JSONException{
+        List<User> list = new LinkedList<User>();
         for(int i=0 ; i<array.length(); i++){
             JSONObject obj = array.getJSONObject(i);
-            Utilisateur user = new Utilisateur();
+            User user = new User();
             user.setId(obj.getInt("id"));
             user.setPseudo(obj.getString("pseudo"));
             user.setPassword(obj.getString("motDePasse"));
             user.setSex(obj.getString("sexe"));
+            user.setEmail(obj.getString("email"));
+            user.setActive(obj.getInt("actif"));
             try{
                 JSONArray listSubject = obj.getJSONArray("listeSujet");
-                Sujet subject = new Sujet();
+                Subject subject = new Subject();
                 user.setListSubject(subject.readJsonList(listSubject));
             }
             catch (JSONException e){
@@ -123,9 +130,11 @@ public class Utilisateur implements Serializable {
         this.setPseudo(json.getString("pseudo"));
         this.setPassword(json.getString("motDePasse"));
         this.setSex(json.getString("sexe"));
+        this.setEmail(json.getString("email"));
+        this.setActive(json.getInt("actif"));
         try{
             JSONArray array = json.getJSONArray("listeSujet");
-            Sujet subject = new Sujet();
+            Subject subject = new Subject();
             this.setListSubject(subject.readJsonList(array));
         }
         catch (JSONException e){

@@ -16,20 +16,20 @@ import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.CreateMessageActivity;
 import be.pierard.projectforum.Data.Message;
-import be.pierard.projectforum.Data.Sujet;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.Subject;
+import be.pierard.projectforum.Data.User;
 
 public class CreateMessageAsync extends AsyncTask<Message, Void, Message> {
 
     // Data
     private int code;
-    private Utilisateur user;
-    private Sujet subject;
+    private User user;
+    private Subject subject;
     private CreateMessageActivity activity;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     // Constructor
-    public CreateMessageAsync(CreateMessageActivity activity, Utilisateur user, Sujet subject){
+    public CreateMessageAsync(CreateMessageActivity activity, User user, Subject subject){
         this.activity = activity;
         this.user = user;
         this.subject = subject;

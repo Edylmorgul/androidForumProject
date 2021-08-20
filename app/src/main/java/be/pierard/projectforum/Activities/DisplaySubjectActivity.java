@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -16,23 +15,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import be.pierard.projectforum.Async.DisplaySubjectAsync;
-import be.pierard.projectforum.Data.Sujet;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.Subject;
+import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
 
 public class DisplaySubjectActivity extends AppCompatActivity {
 
     // Data
-    private Utilisateur userCurrent = new Utilisateur();
+    private User userCurrent = new User();
     private int cpt = 0;
-    public List<Utilisateur> list;
+    public List<User> list;
 
     // Affichage liste sujet
     public void populateListSubject(){
         List<String> array = new ArrayList<>();
 
-        for (Utilisateur u : list){
-            for(Sujet s : u.getListSujet()){
+        for (User u : list){
+            for(Subject s : u.getListSujet()){
                 cpt ++;
                 array.add(cpt + " " + getResources().getString(R.string.authorName) + " " + u.getPseudo() +" " + getResources().getString(R.string.subjectName) + " " + s.getTopicTitle());
             }
@@ -45,12 +44,12 @@ public class DisplaySubjectActivity extends AppCompatActivity {
         // Obtenir élément listViews
         scroll.setOnItemClickListener((parent, view, position, id) -> {
 
-            Utilisateur user = new Utilisateur();
-            Sujet subject = new Sujet();
+            User user = new User();
+            Subject subject = new Subject();
             cpt = 0;
             // selected item
-            for (Utilisateur u : list){
-                for(Sujet s : u.getListSujet()){
+            for (User u : list){
+                for(Subject s : u.getListSujet()){
                     if(cpt == position){
                         user = u;
                         subject = s;
@@ -123,7 +122,7 @@ public class DisplaySubjectActivity extends AppCompatActivity {
 
         // Récupération informations activitée précédente
         Intent intentRecup = getIntent();
-        userCurrent = (Utilisateur) intentRecup.getSerializableExtra("Object");
+        userCurrent = (User) intentRecup.getSerializableExtra("Object");
 
         Button btnBack;
         btnBack = (Button) findViewById(R.id.btnBackDisplaySubject);

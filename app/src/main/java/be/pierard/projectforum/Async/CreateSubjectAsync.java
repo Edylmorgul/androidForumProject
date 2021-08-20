@@ -14,18 +14,18 @@ import java.net.URL;
 import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.CreateSubjectActivity;
-import be.pierard.projectforum.Data.Sujet;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.Subject;
+import be.pierard.projectforum.Data.User;
 
-public class CreateSubjectAsync extends AsyncTask<Sujet, Void, Sujet> {
+public class CreateSubjectAsync extends AsyncTask<Subject, Void, Subject> {
 
     // Data
     private int code;
-    private Utilisateur user;
+    private User user;
     private CreateSubjectActivity activity;
 
     // Constructor
-    public CreateSubjectAsync(CreateSubjectActivity activity, Utilisateur user){
+    public CreateSubjectAsync(CreateSubjectActivity activity, User user){
         this.activity = activity;
         this.user = user;
     }
@@ -36,11 +36,11 @@ public class CreateSubjectAsync extends AsyncTask<Sujet, Void, Sujet> {
     }
 
     @Override
-    protected Sujet doInBackground(Sujet... params) {
+    protected Subject doInBackground(Subject... params) {
         String baseUrl = BaseUrl.URL;
         String rpc = "createSubject.php";
         String uri = baseUrl + rpc;
-        Sujet subject = params[0];
+        Subject subject = params[0];
         String reponse ="";
 
         try{
@@ -82,7 +82,7 @@ public class CreateSubjectAsync extends AsyncTask<Sujet, Void, Sujet> {
         }
     }
 
-    protected void onPostExecute(Sujet params) {
+    protected void onPostExecute(Subject params) {
         this.activity.response(params, code);
     }
 }

@@ -8,21 +8,23 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Ville implements Serializable {
+public class City implements Serializable {
 
     // Data
     private int id;
     private String nameCity;
-    private List<Utilisateur> listUser; // Pourrait juste envoyer un objet utilisateur, dépend de la réalisation du programme
+    private int cp;
+    private List<User> listUser; // Pourrait juste envoyer un objet utilisateur, dépend de la réalisation du programme
 
     // Constructor
-    public Ville(){
+    public City(){
 
     }
 
-    public Ville(String nameCity){
+    public City(String nameCity, int cp){
         this.nameCity = nameCity;
-        listUser = new LinkedList<Utilisateur>();
+        this.cp = cp;
+        listUser = new LinkedList<User>();
     }
 
     // GET/SET
@@ -42,22 +44,27 @@ public class Ville implements Serializable {
         this.nameCity = nameCity;
     }
 
-    public List<Utilisateur> getListUser(){
+    public int getCp(){return cp;}
+
+    public void setCp(int cp){this.cp = cp;}
+
+    public List<User> getListUser(){
         return listUser;
     }
 
-    public void setListUser(List<Utilisateur> listUser){
+    public void setListUser(List<User> listUser){
         this.listUser = listUser;
     }
 
     // Methods
-    public List<Ville> readJsonList(JSONArray array) throws JSONException{
-        List<Ville> list = new LinkedList<Ville>();
+    public List<City> readJsonList(JSONArray array) throws JSONException{
+        List<City> list = new LinkedList<City>();
         for(int i=0 ; i<array.length(); i++){
             JSONObject obj = array.getJSONObject(i);
-            Ville city = new Ville();
+            City city = new City();
             city.setId(obj.getInt("id"));
             city.setNameCity(obj.getString("nomVille"));
+            city.setCp(obj.getInt("cp"));
             list.add(city);
         }
         return list;
@@ -66,10 +73,11 @@ public class Ville implements Serializable {
     public void readJson(JSONObject json)throws JSONException {
         this.setId(json.getInt("id"));
         this.setNameCity(json.getString("nomVille"));
+        this.setCp(json.getInt("cp"));
 
         try{
             JSONArray array = json.getJSONArray("listeUtilisateur");
-             Utilisateur user = new Utilisateur();
+             User user = new User();
             this.setListUser(user.readJsonList(array));
         }
         catch (JSONException e){

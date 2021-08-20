@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Sujet implements Serializable {
+public class Subject implements Serializable {
 
     // Data
     private int id;
@@ -17,11 +17,11 @@ public class Sujet implements Serializable {
     private List<Message> listMessage;
 
     // Contructor
-    public Sujet(){
+    public Subject(){
 
     }
 
-    public Sujet(String topicTitle, String description){
+    public Subject(String topicTitle, String description){
         this.topicTitle = topicTitle;
         this.description = description;
         listMessage = new LinkedList<Message>();
@@ -61,11 +61,11 @@ public class Sujet implements Serializable {
     }
 
     // Methods
-    public List<Sujet> readJsonList(JSONArray array) throws JSONException{
-        List<Sujet> list = new LinkedList<Sujet>();
+    public List<Subject> readJsonList(JSONArray array) throws JSONException{
+        List<Subject> list = new LinkedList<Subject>();
         for(int i=0 ; i<array.length(); i++){
             JSONObject obj = array.getJSONObject(i);
-            Sujet subject = new Sujet();
+            Subject subject = new Subject();
             subject.setId(obj.getInt("id"));
             subject.setTopicTitle(obj.getString("titreSujet"));
             subject.setDescription(obj.getString("description"));
@@ -74,8 +74,8 @@ public class Sujet implements Serializable {
         return list;
     }
 
-    public Sujet readJson(JSONObject json)throws JSONException {
-        Sujet subject = new Sujet();
+    public Subject readJson(JSONObject json)throws JSONException {
+        Subject subject = new Subject();
         subject.setId(json.getInt("id"));
         subject.setTopicTitle(json.getString("titreSujet"));
         subject.setDescription(json.getString("description"));

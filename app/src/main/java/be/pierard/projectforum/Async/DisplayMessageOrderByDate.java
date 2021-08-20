@@ -18,9 +18,9 @@ import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.CreateMessageActivity;
 import be.pierard.projectforum.Data.Message;
-import be.pierard.projectforum.Data.Sujet;
+import be.pierard.projectforum.Data.Subject;
 
-public class DisplayMessageOrderByDate extends AsyncTask<Sujet, Void, List<Message>> {
+public class DisplayMessageOrderByDate extends AsyncTask<Subject, Void, List<Message>> {
     // Data
     private int code;
     private CreateMessageActivity activity;
@@ -36,12 +36,12 @@ public class DisplayMessageOrderByDate extends AsyncTask<Sujet, Void, List<Messa
     }
 
     @Override
-    protected List<Message> doInBackground(Sujet... params) {
+    protected List<Message> doInBackground(Subject... params) {
         String uriBase = BaseUrl.URL;
         String rpc = "orderByMessageByDate.php";
         String uri = uriBase +rpc;
         String reponse ="";
-        Sujet subject = params[0];
+        Subject subject = params[0];
         List<Message> list = new LinkedList<>();
         Message message = new Message();
         try{

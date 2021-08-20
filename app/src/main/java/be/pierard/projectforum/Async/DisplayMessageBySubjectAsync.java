@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.CreateMessageActivity;
-import be.pierard.projectforum.Data.Sujet;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.Subject;
+import be.pierard.projectforum.Data.User;
 
-public class DisplayMessageBySubjectAsync extends AsyncTask<Sujet,Void, List<Utilisateur>> {
+public class DisplayMessageBySubjectAsync extends AsyncTask<Subject,Void, List<User>> {
 
     // Data
     private int code;
@@ -37,14 +37,14 @@ public class DisplayMessageBySubjectAsync extends AsyncTask<Sujet,Void, List<Uti
     }
 
     @Override
-    protected List<Utilisateur> doInBackground(Sujet... params) {
+    protected List<User> doInBackground(Subject... params) {
         String uriBase = BaseUrl.URL;
         String rpc = "getMessageBySubject.php";
         String uri = uriBase +rpc;
         String reponse ="";
-        Sujet subject = params[0];
-        List<Utilisateur> list = new LinkedList<>();
-        Utilisateur user = new Utilisateur();
+        Subject subject = params[0];
+        List<User> list = new LinkedList<>();
+        User user = new User();
         try{
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -87,7 +87,7 @@ public class DisplayMessageBySubjectAsync extends AsyncTask<Sujet,Void, List<Uti
         return list;
     }
 
-    protected void onPostExecute(List<Utilisateur> params) {
+    protected void onPostExecute(List<User> params) {
         //this.activity.list = params;
         this.activity.response(code);
     }

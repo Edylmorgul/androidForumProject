@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import be.pierard.projectforum.Data.Global;
 import be.pierard.projectforum.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), MainActivity.this);
         }
     };
 
@@ -34,18 +34,12 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), MainActivity.this);
         }
     };
 
     // Quitter le programme
     private View.OnClickListener exitListener = v -> finish();
-
-    // Message pop-up
-    private void generateToast(String text){
-        Toast toast = Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT);
-        toast.show();
-    }
 
     // Cycle de vie d'une application android
     // Permet de concevoir l'interface graphique et crée l'activité ==> Se lance automatiquement (Obligatoire)

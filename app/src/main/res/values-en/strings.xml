@@ -8,6 +8,7 @@
     <string name="exitName">Quit</string>
     <string name="textMenuName">Select option :</string>
     <string name="connectionName">Connection</string>
+    <string name="emailName">email</string>
     <string name="pseudoName">pseudo</string>
     <string name="passwordName">password</string>
     <string name="validateName">Validate</string>

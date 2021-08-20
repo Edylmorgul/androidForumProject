@@ -21,16 +21,16 @@ import java.util.List;
 import be.pierard.projectforum.Async.CreateMessageAsync;
 import be.pierard.projectforum.Async.DisplayMessageOrderByDate;
 import be.pierard.projectforum.Data.Message;
-import be.pierard.projectforum.Data.Sujet;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.Subject;
+import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
 
 public class CreateMessageActivity extends AppCompatActivity {
 
     // Data
-    private Utilisateur userCurrent = new Utilisateur();
-    private Utilisateur user = new Utilisateur();
-    private Sujet subject = new Sujet();
+    private User userCurrent = new User();
+    private User user = new User();
+    private Subject subject = new Subject();
     private Message message;
     private LinearLayout layout;
     public List<Message> list;
@@ -176,11 +176,11 @@ public class CreateMessageActivity extends AppCompatActivity {
 
         // Récupération informations activitée précédente
         Intent intentRecupUserCurrent = getIntent();
-        userCurrent = (Utilisateur) intentRecupUserCurrent.getSerializableExtra("ObjectUserCurrent");
+        userCurrent = (User) intentRecupUserCurrent.getSerializableExtra("ObjectUserCurrent");
         Intent intentRecupUser = getIntent();
-        user = (Utilisateur) intentRecupUser.getSerializableExtra("ObjectUser");
+        user = (User) intentRecupUser.getSerializableExtra("ObjectUser");
         Intent intentRecupSubject = getIntent();
-        subject = (Sujet) intentRecupSubject.getSerializableExtra("ObjectSubject");
+        subject = (Subject) intentRecupSubject.getSerializableExtra("ObjectSubject");
 
         // AAffichage information sujet pour message
         TextView text = findViewById(R.id.titleSubjectMessage);

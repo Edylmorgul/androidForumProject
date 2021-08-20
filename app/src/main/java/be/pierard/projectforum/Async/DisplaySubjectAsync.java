@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.DisplaySubjectActivity;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.User;
 
-public class DisplaySubjectAsync extends AsyncTask<Void, Void, List<Utilisateur>> {
+public class DisplaySubjectAsync extends AsyncTask<Void, Void, List<User>> {
 
     // Data
     private int code;
@@ -33,13 +33,13 @@ public class DisplaySubjectAsync extends AsyncTask<Void, Void, List<Utilisateur>
     }
 
     @Override
-    protected List<Utilisateur> doInBackground(Void... params){
+    protected List<User> doInBackground(Void... params){
         String uriBase = BaseUrl.URL;
         String rpc = "getSubjectByUser.php";
         String uri = uriBase +rpc;
         String reponse ="";
-        List<Utilisateur> list = new LinkedList<>();
-        Utilisateur user = new Utilisateur();
+        List<User> list = new LinkedList<>();
+        User user = new User();
         try{
             URL url = new URL(uri);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -75,7 +75,7 @@ public class DisplaySubjectAsync extends AsyncTask<Void, Void, List<Utilisateur>
         return list;
     }
 
-    protected void onPostExecute(List<Utilisateur> params) {
+    protected void onPostExecute(List<User> params) {
         this.activity.list = params;
         this.activity.response(code);
     }

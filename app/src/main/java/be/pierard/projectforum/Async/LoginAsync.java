@@ -14,9 +14,9 @@ import java.net.URL;
 import java.util.Scanner;
 
 import be.pierard.projectforum.Activities.LoginActivity;
-import be.pierard.projectforum.Data.Utilisateur;
+import be.pierard.projectforum.Data.User;
 
-public class LoginAsync extends AsyncTask<Utilisateur, Void, Utilisateur> {
+public class LoginAsync extends AsyncTask<String, Void, User> {
 
     // Data
     private int code;
@@ -29,16 +29,19 @@ public class LoginAsync extends AsyncTask<Utilisateur, Void, Utilisateur> {
 
     @Override
     protected void onPreExecute() {
+        super.onPreExecute();
 
     }
 
     @Override
-    protected Utilisateur doInBackground(Utilisateur... params) {
+    protected User doInBackground(String... params) {
         String baseUrl = BaseUrl.URL;
         String rpc = "login.php";
         String uri = baseUrl + rpc;
-        Utilisateur user = params[0];
+        String email = params[0];
+        String password = params[1];
         String reponse ="";
+        User user = null;
 
         try{
             URL url = new URL(uri);
@@ -51,7 +54,7 @@ public class LoginAsync extends AsyncTask<Utilisateur, Void, Utilisateur> {
 
             OutputStream os = connection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            String postParams = "pseudo="+user.getPseudo()+"&motDePasse="+user.getPassword();
+            String postParams = "email="+email+"&motDePasse="+password;
             writer.write(postParams);
             writer.flush();
             writer.close();
@@ -68,6 +71,7 @@ public class LoginAsync extends AsyncTask<Utilisateur, Void, Utilisateur> {
                 JSONObject json = new JSONObject(reponse);
                 code = json.getInt("code");
                 if(code == 201){
+                    user = new User();
                     JSONObject utilisateur = json.getJSONObject("utilisateur");
                     user.readJson(utilisateur);
                 }
@@ -80,7 +84,7 @@ public class LoginAsync extends AsyncTask<Utilisateur, Void, Utilisateur> {
         }
     }
 
-    protected void onPostExecute(Utilisateur params) {
+    protected void onPostExecute(User params) {
         this.activity.response(params, code);
     }
 }
