@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     };
 
     // Quitter le programme
-    private View.OnClickListener exitListener = v -> finish();
+    private View.OnClickListener exitListener = v ->{
+        Global.generatePopUpExit(MainActivity.this);
+    };
 
     // Cycle de vie d'une application android
     // Permet de concevoir l'interface graphique et crée l'activité ==> Se lance automatiquement (Obligatoire)

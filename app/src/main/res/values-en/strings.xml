@@ -45,4 +45,15 @@
     <string name="authorName">AUTHOR : </string>
     <string name="subjectName">SUBJECT : </string>
     <string name="spinnerCityName">City choice : </string>
+    <string name="exitTitlePopUpName">Exit</string>
+    <string name="exitPopUpName">Do you want to exit ?</string>
+    <string name="yesName">Yes</string>
+    <string name="noName">No</string>
+    <string name="spinnerGenderName">Sex choice :</string>
+
+    <string-array name="listOfGender">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Other</item>
+    </string-array>
 </resources>

@@ -44,6 +44,11 @@
     <string name="authorName">AUTEUR : </string>
     <string name="subjectName">SUJET : </string>
     <string name="spinnerCityName">Choix ville : </string>
+    <string name="exitTitlePopUpName">Quitter</string>
+    <string name="exitPopUpName">Voulez-vous quitter le programme ?</string>
+    <string name="yesName">Oui</string>
+    <string name="noName">Non</string>
+    <string name="spinnerGenderName">Choix sexe :</string>
     <string-array name="listOfCity">
         <item>Charleroi</item>
         <item>Namur</item>
@@ -51,5 +56,11 @@
         <item>Tournai</item>
         <item>Ypres</item>
         <item>Mons</item>
+    </string-array>
+
+    <string-array name="listOfGender">
+        <item>Homme</item>
+        <item>Femme</item>
+        <item>Autre</item>
     </string-array>
 </resources>

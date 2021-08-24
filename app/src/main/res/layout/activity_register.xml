@@ -28,11 +28,18 @@
             android:id="@+id/pseudoTextRegister"
             android:layout_width="260dp"
             android:layout_height="50dp"
-            android:autofillHints=""
             android:hint="@string/pseudoName"
             android:inputType="text"
             tools:layout_editor_absoluteX="73dp"
             tools:layout_editor_absoluteY="136dp" />
+
+        <EditText
+            android:id="@+id/emailTextRegister"
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:hint="@string/emailName"
+            android:inputType="textWebEmailAddress"
+            tools:layout_editor_absoluteX="73dp" />
 
         <EditText
             android:id="@+id/passwordTextRegister"
@@ -42,14 +49,12 @@
             android:ems="10"
             android:inputType="textPassword"
             tools:layout_editor_absoluteX="76dp"
-            tools:layout_editor_absoluteY="207dp"
-            android:autofillHints="" />
+            tools:layout_editor_absoluteY="207dp"/>
 
         <EditText
             android:id="@+id/passwordConfirmTextRegister"
             android:layout_width="260dp"
             android:layout_height="50dp"
-            android:autofillHints=""
             android:ems="10"
             android:hint="@string/confirmName"
             android:inputType="textPassword"
@@ -60,7 +65,6 @@
             android:id="@+id/cityTextRegister"
             android:layout_width="260dp"
             android:layout_height="50dp"
-            android:autofillHints=""
             android:ems="10"
             android:hint="@string/cityName"
             android:inputType="text"
@@ -83,26 +87,13 @@
             tools:layout_editor_absoluteX="243dp"
             tools:layout_editor_absoluteY="542dp" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="210dp"
-            android:layout_height="70dp"
-            tools:layout_editor_absoluteX="107dp"
-            tools:layout_editor_absoluteY="450dp">
-
-            <RadioButton
-                android:id="@+id/rdbtnMenRegister"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:checked="true"
-                android:text="@string/menName" />
-
-            <RadioButton
-                android:id="@+id/rdbtnWomenRegister"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:text="@string/womenName" />
-        </RadioGroup>
+        <Spinner
+            android:id="@+id/spinGender"
+            android:layout_width="260dp"
+            android:layout_height="30dp"
+            android:entries="@array/listOfGender"
+            android:prompt="@string/spinnerCityName">
+        </Spinner>
 
         <Spinner
             android:id="@+id/spinCity"
@@ -118,7 +109,6 @@
             android:layout_height="80dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:layout_marginBottom="32dp"
@@ -127,7 +117,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flow2" />
+            app:layout_constraintTop_toBottomOf="@+id/cityTextRegister" />
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/flow2"
@@ -139,7 +129,7 @@
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:orientation="vertical"
-            app:constraint_referenced_ids="pseudoTextRegister,passwordTextRegister,passwordConfirmTextRegister,radioGroup"
+            app:constraint_referenced_ids="pseudoTextRegister,emailTextRegister,passwordTextRegister,passwordConfirmTextRegister,spinGender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />

@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectForum">
-        <activity android:name=".Activities.DisplaySubjectActivity"></activity>
+        <activity android:name=".Activities.ActionAdministratorActivity"></activity>
+        <activity android:name=".Activities.DisplaySubjectActivity" />
         <activity android:name=".Activities.CreateSubjectActivity" />
         <activity android:name=".Activities.CreateMessageActivity" />
         <activity android:name=".Activities.ActionUserActivity" />

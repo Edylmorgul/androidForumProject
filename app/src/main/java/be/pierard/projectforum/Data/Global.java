@@ -1,12 +1,14 @@
 package be.pierard.projectforum.Data;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import be.pierard.projectforum.Activities.MainActivity;
+import be.pierard.projectforum.R;
 
 // Classe utilitaire du projet
 public class Global {
@@ -53,5 +55,33 @@ public class Global {
     public static void generateToast(String text, Activity context){
         Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    // Pop-up exit
+    public static void generatePopUpExit(Activity context){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.exitTitlePopUpName);
+        builder.setMessage(R.string.exitPopUpName);
+
+        builder.setPositiveButton(R.string.yesName, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i){
+
+                context.finish();
+
+            }
+        });
+
+        builder.setNegativeButton(R.string.noName, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i){
+
+                dialogInterface.dismiss();
+
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
