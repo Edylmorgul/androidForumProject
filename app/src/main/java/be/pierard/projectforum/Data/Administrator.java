@@ -8,8 +8,8 @@ public class Administrator extends User {
         super();
     }
 
-    public Administrator(String pseudo, String password, String sex, String email, int active){
-        super(pseudo, password, sex, email, active);
+    public Administrator(String pseudo, String password, String sex, String email, City city){
+        super(pseudo, password, sex, email, city);
     }
 
     // GET/SET

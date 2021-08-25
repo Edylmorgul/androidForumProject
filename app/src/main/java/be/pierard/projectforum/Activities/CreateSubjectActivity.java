@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import be.pierard.projectforum.Async.CreateSubjectAsync;
+import be.pierard.projectforum.Data.Global;
 import be.pierard.projectforum.Data.Subject;
 import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
@@ -19,50 +20,55 @@ import be.pierard.projectforum.R;
 public class CreateSubjectActivity extends AppCompatActivity {
 
     // Data
-    private User user = new User();
+    private User user;
     private Subject subject;
+    EditText txtTitle;
+    EditText txtContent;
 
     // Création du sujet
     private View.OnClickListener createSubjectLitener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            EditText txtTitle;
-            EditText txtContent;
-            String title;
-            String content;
 
-            // Récupération des champs
-            txtTitle = findViewById(R.id.titleTextSubject);
-            title = txtTitle.getText().toString();
-            txtContent = findViewById(R.id.messageTextSubject);
-            content = txtContent.getText().toString();
-
-            // Réinitialiser les codes couleurs
-            errorColor(0, txtTitle);
-            errorColor(0, txtContent);
-
-            try{
-                // Test champs vide
-                if(title == null || title.equals("") || content == null || content.equals("")){
-                    generateToast(getResources().getString(R.string.toastErrorFormName));
-                }
-
-                // Test nombre de caractères
-                else if(title.length() < 4){
-                    generateToast(getResources().getString(R.string.toastErrorCharacterNumberName));
-                    errorColor(1, txtTitle);
-                }
-
-                // Creation objet
-                else{
-                    subject = new Subject(title,content);
+            if(!checkData()){
+                try{
+                    // Creation objet
+                    subject = new Subject(txtTitle.getText().toString(),txtContent.getText().toString());
                     new CreateSubjectAsync(CreateSubjectActivity.this, user).execute(subject);
                 }
-            }
-            catch (Exception e){
-                generateToast(getResources().getString(R.string.toastErrorName));
+                catch (Exception e){
+                    Global.generateToast(getResources().getString(R.string.toastErrorName), CreateSubjectActivity.this);
+                }
             }
         }
+    };
+
+    // Vérifier les champs
+    public boolean checkData(){
+        // Données
+        boolean error = false;
+
+        // Récupération des champs
+        txtTitle = findViewById(R.id.titleTextSubject);
+        txtContent = findViewById(R.id.messageTextSubject);
+
+        // Test des différents champs
+        if(txtTitle.getText().toString().isEmpty()){
+            txtTitle.setError(getResources().getString(R.string.errorForm));
+            error = true;
+        }
+
+        if(txtTitle.getText().toString().length() < 4){
+            txtTitle.setError(getResources().getString(R.string.toastErrorCharacterNumberName));
+            error = true;
+        }
+
+        if(txtContent.getText().toString().isEmpty()){
+            txtContent.setError(getResources().getString(R.string.errorForm));
+            error = true;
+        }
+
+        return error;
     };
 
     // Retour menu utilisateur
@@ -74,7 +80,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), CreateSubjectActivity.this);
         }
     };
 
@@ -82,49 +88,32 @@ public class CreateSubjectActivity extends AppCompatActivity {
     public void response(Subject param, int code) {
         switch (code){
             case 1 :
-                generateToast(getResources().getString(R.string.toastErrorName));
+                Global.generateToast(getResources().getString(R.string.toastErrorName), CreateSubjectActivity.this);
                 break;
             case 201 :
                 try{
-                    generateToast(getResources().getString(R.string.toastValidateName));
+                    Global.generateToast(getResources().getString(R.string.toastValidateName), CreateSubjectActivity.this);
                     Intent intent = new Intent(CreateSubjectActivity.this, ActionUserActivity.class);
                     intent.putExtra("Object", user);
                     startActivity(intent);
                     finish();
                 }
                 catch (Exception e){
-                    generateToast(getResources().getString(R.string.toastErrorName));
+                    Global.generateToast(getResources().getString(R.string.toastErrorName), CreateSubjectActivity.this);
                 }
                 break;
             case 218 :
-                generateToast(getResources().getString(R.string.toastErrorTitleExistName));
+                Global.generateToast(getResources().getString(R.string.toastErrorTitleExistName), CreateSubjectActivity.this);
                 break;
             case 401 :
-                generateToast(getResources().getString(R.string.toastErrorSqlLiteName));
+                Global.generateToast(getResources().getString(R.string.toastErrorSqlLiteName), CreateSubjectActivity.this);
                 break;
             case 403 :
-                generateToast(getResources().getString(R.string.toastErrorBddNotFoundName));
+                Global.generateToast(getResources().getString(R.string.toastErrorBddNotFoundName), CreateSubjectActivity.this);
                 break;
             case 500 :
-                generateToast(getResources().getString(R.string.toastErrorServerName));
+                Global.generateToast(getResources().getString(R.string.toastErrorServerName), CreateSubjectActivity.this);
                 break;
-        }
-    }
-
-    // Message pop-up
-    private void generateToast(String text){
-        Toast toast = Toast.makeText(CreateSubjectActivity.this, text, Toast.LENGTH_SHORT);
-        toast.show();
-    }
-
-    // Code couleur pour signifier erreur
-    private void errorColor(int flag, EditText txt){
-        if(flag == 1){
-            txt.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
-        }
-
-        else{
-            txt.getBackground().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_ATOP);
         }
     }
 
@@ -134,6 +123,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_subject);
 
         // Récupération informations activitée précédente
+        user = new User();
         Intent intentRecup = getIntent();
         user = (User) intentRecup.getSerializableExtra("Object");
 

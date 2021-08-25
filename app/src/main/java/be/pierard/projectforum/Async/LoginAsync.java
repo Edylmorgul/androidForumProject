@@ -73,7 +73,7 @@ public class LoginAsync extends AsyncTask<String, Void, User> {
                 if(code == 201){
                     user = new User();
                     JSONObject utilisateur = json.getJSONObject("utilisateur");
-                    user.readJson(utilisateur);
+                    user.getJson(utilisateur);
                 }
             }
             return user;

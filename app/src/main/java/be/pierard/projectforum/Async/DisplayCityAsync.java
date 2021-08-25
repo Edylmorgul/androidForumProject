@@ -62,7 +62,7 @@ public class DisplayCityAsync extends AsyncTask<Void, Void, List<City>> {
                 code = json.getInt("code");
                 if(code == 201){
                     JSONArray jsonArray = json.getJSONArray("listeVille");
-                    list = city.readJsonList(jsonArray);
+                    list = city.getJsonList(jsonArray);
                     return list;
                 }
                 return list;

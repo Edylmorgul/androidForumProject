@@ -61,7 +61,7 @@ public class Subject implements Serializable {
     }
 
     // Methods
-    public List<Subject> readJsonList(JSONArray array) throws JSONException{
+    public static List<Subject> getJsonList(JSONArray array) throws JSONException{
         List<Subject> list = new LinkedList<Subject>();
         for(int i=0 ; i<array.length(); i++){
             JSONObject obj = array.getJSONObject(i);
@@ -74,7 +74,7 @@ public class Subject implements Serializable {
         return list;
     }
 
-    public Subject readJson(JSONObject json)throws JSONException {
+    public Subject getJson(JSONObject json)throws JSONException {
         Subject subject = new Subject();
         subject.setId(json.getInt("id"));
         subject.setTopicTitle(json.getString("titreSujet"));
@@ -82,8 +82,7 @@ public class Subject implements Serializable {
 
         try{
             JSONArray array = json.getJSONArray("listeMessage");
-            Message message = new Message();
-            this.setListMessage(message.readJsonList(array));
+            this.setListMessage(Message.getJsonList(array));
         }
         catch (JSONException e){
             this.setListMessage(null);

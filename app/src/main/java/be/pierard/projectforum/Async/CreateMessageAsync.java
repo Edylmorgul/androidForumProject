@@ -23,15 +23,13 @@ public class CreateMessageAsync extends AsyncTask<Message, Void, Message> {
 
     // Data
     private int code;
-    private User user;
     private Subject subject;
     private CreateMessageActivity activity;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     // Constructor
-    public CreateMessageAsync(CreateMessageActivity activity, User user, Subject subject){
+    public CreateMessageAsync(CreateMessageActivity activity, Subject subject){
         this.activity = activity;
-        this.user = user;
         this.subject = subject;
     }
 
@@ -60,7 +58,7 @@ public class CreateMessageAsync extends AsyncTask<Message, Void, Message> {
 
             OutputStream os = connection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            String postParams = "idUtilisateur="+user.getId()+"&idSujet="+subject.getId()+"&contenu="+message.getContent()+"&date="+dateString;
+            String postParams = "idUtilisateur="+message.getUser().getId()+"&idSujet="+subject.getId()+"&contenu="+message.getContent()+"&date="+dateString;
             writer.write(postParams);
             writer.flush();
             writer.close();

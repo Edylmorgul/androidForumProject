@@ -16,18 +16,17 @@ public class Message implements Serializable, Comparable<Message> {
     private int id;
     private String content;
     private Date dateMessage;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-    private User user; // Pour liste des messages triés avec auteur
+    private User user;
 
     // Constructor
     public Message(){
 
     }
 
-    public Message(String content, Date dateMessage){
+    public Message(String content, Date dateMessage, User user){
         this.content = content;
         this.dateMessage = dateMessage;
-        user = new User();
+        user = this.user;
     }
 
     // GET/SET
@@ -60,8 +59,9 @@ public class Message implements Serializable, Comparable<Message> {
     public void setUser(User user){this.user = user;}
 
     // Methods
-    public List<Message> readJsonList(JSONArray array) throws JSONException {
-        String dateString;
+    public static List<Message> getJsonList(JSONArray array) throws JSONException {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String strDate;
         Date date = null;
         List<Message> list = new LinkedList<Message>();
         for(int i=0 ; i<array.length(); i++){
@@ -73,13 +73,8 @@ public class Message implements Serializable, Comparable<Message> {
             user.setSex(obj.getString("sexe"));
             message.setId(obj.getInt("idMessage"));
             message.setContent(obj.getString("contenu"));
-            dateString = obj.getString("dateMessage");
-            try{
-                date = sdf.parse(dateString);
-            }
-            catch (Exception e){
-                e.getStackTrace();
-            }
+            strDate = obj.getString("dateMessage");
+            date = Global.tryParseDate(strDate, format);
             message.setDateMessage(date);
             list.add(message);
             message.setUser(user);
@@ -87,19 +82,15 @@ public class Message implements Serializable, Comparable<Message> {
         return list;
     }
 
-    public void readJson(JSONObject json)throws JSONException {
-        String dateString;
+    public void getJson(JSONObject json)throws JSONException {
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String strDate;
         Date date = null;
 
         this.setId(json.getInt("idMessage"));
         this.setContent(json.getString("message"));
-        dateString = json.getString("dateMessage");
-        try{
-            date = sdf.parse(dateString);
-        }
-        catch (Exception e){
-            e.getStackTrace();
-        }
+        strDate = json.getString("dateMessage");
+        date = Global.tryParseDate(strDate, format);
         this.setDateMessage(date);
     }
 

@@ -20,6 +20,7 @@ import java.util.List;
 
 import be.pierard.projectforum.Async.CreateMessageAsync;
 import be.pierard.projectforum.Async.DisplayMessageOrderByDate;
+import be.pierard.projectforum.Data.Global;
 import be.pierard.projectforum.Data.Message;
 import be.pierard.projectforum.Data.Subject;
 import be.pierard.projectforum.Data.User;
@@ -34,6 +35,7 @@ public class CreateMessageActivity extends AppCompatActivity {
     private Message message;
     private LinearLayout layout;
     public List<Message> list;
+    EditText content;
 
     // Affichage liste messages
     public void populateListMessage() {
@@ -61,29 +63,37 @@ public class CreateMessageActivity extends AppCompatActivity {
     private View.OnClickListener validateListener = new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            EditText textMessage;
-            String content;
 
-            textMessage = findViewById(R.id.messageTextSubjectByUser);
-            content = textMessage.getText().toString();
-            try{
-                // Test champs vide
-                if(content == null || content.equals("")){
-                    generateToast(getResources().getString(R.string.toastErrorFormName));
-                }
-
-                // Creation objet message
-                else{
+            if(!checkData()){
+                try{
+                    // Creation objet message
                     // Récup date actuelle message
                     Date currentTime = new Date();
-                    message = new Message(content,currentTime);
-                    new CreateMessageAsync(CreateMessageActivity.this, userCurrent, subject).execute(message);
+                    message = new Message(content.getText().toString(),currentTime, userCurrent);
+                    new CreateMessageAsync(CreateMessageActivity.this, subject).execute(message);
+                }
+                catch (Exception e){
+                    Global.generateToast(getResources().getString(R.string.toastErrorName), CreateMessageActivity.this);
                 }
             }
-            catch (Exception e){
-                generateToast(getResources().getString(R.string.toastErrorName));
-            }
         }
+    };
+
+    // Vérifier les champs
+    public boolean checkData(){
+        // Données
+        boolean error = false;
+
+        // Récupération des champs
+        content = findViewById(R.id.messageTextSubjectByUser);
+
+        // Test des différents champs
+        if(content.getText().toString().isEmpty()){
+            content.setError(getResources().getString(R.string.errorForm));
+            error = true;
+        }
+
+        return error;
     };
 
     // Retour menu utilisateur
@@ -95,7 +105,7 @@ public class CreateMessageActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), CreateMessageActivity.this);
         }
     };
 
@@ -103,11 +113,11 @@ public class CreateMessageActivity extends AppCompatActivity {
     public void response(Message param, int code) {
         switch (code){
             case 1 :
-                generateToast(getResources().getString(R.string.toastErrorName));
+                Global.generateToast(getResources().getString(R.string.toastErrorName), CreateMessageActivity.this);
                 break;
             case 201 :
                 try{
-                    generateToast(getResources().getString(R.string.toastValidateName));
+                    Global.generateToast(getResources().getString(R.string.toastValidateName), CreateMessageActivity.this);
                     // Refresh de la liste des messages
                     new DisplayMessageOrderByDate(CreateMessageActivity.this).execute(subject);
                     populateListMessage();
@@ -116,25 +126,19 @@ public class CreateMessageActivity extends AppCompatActivity {
                     textMessage.setText("");
                 }
                 catch (Exception e){
-                    generateToast(getResources().getString(R.string.toastErrorName));
+                    Global.generateToast(getResources().getString(R.string.toastErrorName), CreateMessageActivity.this);
                 }
                 break;
             case 401 :
-                generateToast(getResources().getString(R.string.toastErrorSqlLiteName));
+                Global.generateToast(getResources().getString(R.string.toastErrorSqlLiteName), CreateMessageActivity.this);
                 break;
             case 403 :
-                generateToast(getResources().getString(R.string.toastErrorBddNotFoundName));
+                Global.generateToast(getResources().getString(R.string.toastErrorBddNotFoundName), CreateMessageActivity.this);
                 break;
             case 500 :
-                generateToast(getResources().getString(R.string.toastErrorServerName));
+                Global.generateToast(getResources().getString(R.string.toastErrorServerName), CreateMessageActivity.this);
                 break;
         }
-    }
-
-    // Message pop-up
-    private void generateToast(String text){
-        Toast toast = Toast.makeText(CreateMessageActivity.this, text, Toast.LENGTH_SHORT);
-        toast.show();
     }
 
     // Recu reponse DisplayMessageBySubjectAsync
@@ -142,7 +146,7 @@ public class CreateMessageActivity extends AppCompatActivity {
     public void response(int code) {
         switch (code){
             case 1 :
-                generateToast(getResources().getString(R.string.toastErrorName));
+                Global.generateToast(getResources().getString(R.string.toastErrorName), CreateMessageActivity.this);
                 break;
             case 201 :
                 populateListMessage();
@@ -158,13 +162,13 @@ public class CreateMessageActivity extends AppCompatActivity {
                 textView.setId(1);
                 break;
             case 401 :
-                generateToast(getResources().getString(R.string.toastErrorSqlLiteName));
+                Global.generateToast(getResources().getString(R.string.toastErrorSqlLiteName), CreateMessageActivity.this);
                 break;
             case 403 :
-                generateToast(getResources().getString(R.string.toastErrorBddNotFoundName));
+                Global.generateToast(getResources().getString(R.string.toastErrorBddNotFoundName), CreateMessageActivity.this);
                 break;
             case 500 :
-                generateToast(getResources().getString(R.string.toastErrorServerName));
+                Global.generateToast(getResources().getString(R.string.toastErrorServerName), CreateMessageActivity.this);
                 break;
         }
     }

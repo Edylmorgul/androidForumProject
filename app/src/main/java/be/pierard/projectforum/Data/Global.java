@@ -3,6 +3,9 @@ package be.pierard.projectforum.Data;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +22,22 @@ public class Global {
     private static String passwordPattern = "^(?=.*[0-9])" // Doit contenir un chiffre
             + "(?=.*[a-z])(?=.*[A-Z])" // Doit contenir majuscule et minuscule
             + "(?=\\S+$).{4,20}$"; // Pas d'espace permis + longueur mdp 4 - 20
+
+    public static String getLetterPattern() {
+        return letterPattern;
+    }
+    public static String getNumberPattern() {
+        return numberPattern;
+    }
+    public static String getEmailPattern() {
+        return emailPattern;
+    }
+    public static String getPhonePattern() {
+        return phonePattern;
+    }
+    public static String getPasswordPattern() {
+        return passwordPattern;
+    }
 
     public static Integer tryParseInt(String valeur) {
         try {

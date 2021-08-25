@@ -73,7 +73,7 @@ public class DisplayMessageOrderByDate extends AsyncTask<Subject, Void, List<Mes
                 code = json.getInt("code");
                 if(code == 201){
                     JSONArray jsonArray = json.getJSONArray("listeMessageTri");
-                    list = message.readJsonList(jsonArray);
+                    list = message.getJsonList(jsonArray);
                     return list;
                 }
                 return list;

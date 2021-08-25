@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import be.pierard.projectforum.Async.DisplaySubjectAsync;
+import be.pierard.projectforum.Data.Global;
 import be.pierard.projectforum.Data.Subject;
 import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
@@ -77,21 +78,15 @@ public class DisplaySubjectActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), DisplaySubjectActivity.this);
         }
     };
-
-    // Message pop-up
-    private void generateToast(String text){
-        Toast toast = Toast.makeText(DisplaySubjectActivity.this, text, Toast.LENGTH_LONG);
-        toast.show();
-    }
 
     // Recu reponse DisplaySubjectAsync
     public void response(int code) {
         switch (code){
             case 1 :
-                generateToast(getResources().getString(R.string.toastErrorName));
+                Global.generateToast(getResources().getString(R.string.toastErrorName), DisplaySubjectActivity.this);
                 break;
             case 201 :
                 populateListSubject();
@@ -101,16 +96,16 @@ public class DisplaySubjectActivity extends AppCompatActivity {
                 subTitle.setVisibility(View.INVISIBLE);
                 ListView scroll = findViewById(R.id.flowListSubject);
                 scroll.setVisibility(View.INVISIBLE);
-                generateToast(getResources().getString(R.string.listSubjectEmptyName));
+                Global.generateToast(getResources().getString(R.string.listSubjectEmptyName), DisplaySubjectActivity.this);
                 break;
             case 401 :
-                generateToast(getResources().getString(R.string.toastErrorSqlLiteName));
+                Global.generateToast(getResources().getString(R.string.toastErrorSqlLiteName), DisplaySubjectActivity.this);
                 break;
             case 403 :
-                generateToast(getResources().getString(R.string.toastErrorBddNotFoundName));
+                Global.generateToast(getResources().getString(R.string.toastErrorBddNotFoundName), DisplaySubjectActivity.this);
                 break;
             case 500 :
-                generateToast(getResources().getString(R.string.toastErrorServerName));
+                Global.generateToast(getResources().getString(R.string.toastErrorServerName), DisplaySubjectActivity.this);
                 break;
         }
     }

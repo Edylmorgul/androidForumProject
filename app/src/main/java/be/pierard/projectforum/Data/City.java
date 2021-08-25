@@ -57,7 +57,7 @@ public class City implements Serializable {
     }
 
     // Methods
-    public List<City> readJsonList(JSONArray array) throws JSONException{
+    public static List<City> getJsonList(JSONArray array) throws JSONException{
         List<City> list = new LinkedList<City>();
         for(int i=0 ; i<array.length(); i++){
             JSONObject obj = array.getJSONObject(i);
@@ -70,15 +70,14 @@ public class City implements Serializable {
         return list;
     }
 
-    public void readJson(JSONObject json)throws JSONException {
+    public void getJson(JSONObject json)throws JSONException {
         this.setId(json.getInt("id"));
         this.setNameCity(json.getString("nomVille"));
         this.setCp(json.getInt("cp"));
 
         try{
             JSONArray array = json.getJSONArray("listeUtilisateur");
-             User user = new User();
-            this.setListUser(user.readJsonList(array));
+            this.setListUser(User.getListJson(array));
         }
         catch (JSONException e){
             this.setListUser(null);

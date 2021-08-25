@@ -74,7 +74,7 @@ public class DisplayMessageBySubjectAsync extends AsyncTask<Subject,Void, List<U
                 code = json.getInt("code");
                 if(code == 201){
                     JSONArray jsonArray = json.getJSONArray("listeUtilisateur");
-                    list = user.readJsonList(jsonArray);
+                    list = user.getListJson(jsonArray);
                     return list;
                 }
                 return list;

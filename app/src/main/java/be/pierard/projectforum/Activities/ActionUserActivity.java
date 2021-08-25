@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import be.pierard.projectforum.Data.Global;
 import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.R;
 
@@ -27,7 +28,7 @@ public class ActionUserActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), ActionUserActivity.this);
         }
     };
 
@@ -41,7 +42,7 @@ public class ActionUserActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), ActionUserActivity.this);
         }
     };
 
@@ -53,15 +54,9 @@ public class ActionUserActivity extends AppCompatActivity {
             finish();
         }
         catch (Exception e){
-            generateToast(getResources().getString(R.string.toastErrorName));
+            Global.generateToast(getResources().getString(R.string.toastErrorName), ActionUserActivity.this);
         }
     };
-
-    // Message pop-up
-    private void generateToast(String text){
-        Toast toast = Toast.makeText(ActionUserActivity.this, text, Toast.LENGTH_SHORT);
-        toast.show();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

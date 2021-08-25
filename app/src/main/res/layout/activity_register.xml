@@ -71,6 +71,16 @@
             tools:layout_editor_absoluteX="76dp"
             tools:layout_editor_absoluteY="352dp" />
 
+        <EditText
+            android:id="@+id/postalCodeTextRegister"
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="@string/postalCodeName"
+            android:inputType="text"
+            tools:layout_editor_absoluteX="76dp"
+            tools:layout_editor_absoluteY="352dp" />
+
         <Button
             android:id="@+id/btnValidateRegister"
             android:layout_width="120dp"
@@ -102,6 +112,14 @@
             android:entries="@array/listOfCity"
             android:prompt="@string/spinnerCityName">
         </Spinner>
+
+        <CheckBox
+            android:id="@+id/conditions"
+            android:layout_width="260dp"
+            android:layout_height="30dp"
+            android:backgroundTint="#D500F9"
+            android:buttonTint="#D500F9"
+            android:text="@string/conditionsName"/>
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/flow7"
@@ -135,12 +153,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <androidx.constraintlayout.helper.widget.Flow
-            android:layout_width="331dp"
-            android:layout_height="99dp"
+            android:layout_width="333dp"
+            android:layout_height="181dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
-            app:constraint_referenced_ids="spinCity,cityTextRegister"
+            app:constraint_referenced_ids="spinCity,cityTextRegister,postalCodeTextRegister,conditions"
             app:layout_constraintBottom_toTopOf="@+id/flow7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

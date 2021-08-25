@@ -19,6 +19,7 @@
     <string name="cityName">City</string>
     <string name="toastErrorName">Error !</string>
     <string name="toastErrorPseudoExistName">Existing pseudo !</string>
+    <string name="toastErrorEmailExistName">Existing email !</string>
     <string name="toastErrorTitleExistName">Existing title !</string>
     <string name="toastErrorFormName">Empty fields !</string>
     <string name="toastErrorPasswordName">Password is not the same !</string>
@@ -50,6 +51,12 @@
     <string name="yesName">Yes</string>
     <string name="noName">No</string>
     <string name="spinnerGenderName">Sex choice :</string>
+    <string name="postalCodeName">Postal code</string>
+    <string name="emailRegexName">Invalide mail !</string>
+    <string name="conditionsName">I have read and understood the conditions</string>
+    <string name="errorConditionsName">Please accept the conditions</string>
+    <string name="errorForm">This field cannot be empty !</string>
+    <string name="errorPostalCode">Invalid number !</string>
 
     <string-array name="listOfGender">
         <item>Men</item>

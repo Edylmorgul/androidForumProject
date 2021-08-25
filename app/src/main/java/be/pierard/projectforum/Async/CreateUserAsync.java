@@ -17,17 +17,15 @@ import be.pierard.projectforum.Activities.RegisterActivity;
 import be.pierard.projectforum.Data.User;
 import be.pierard.projectforum.Data.City;
 
-public class RegisterAsync extends AsyncTask<User, Void, User> { //Type donnée entrée pour appel X, Type unité de progression(Souvent entier) Y, Type résultat de retour appel Z
+public class CreateUserAsync extends AsyncTask<User, Void, User> { //Type donnée entrée pour appel X, Type unité de progression(Souvent entier) Y, Type résultat de retour appel Z
 
     // Data
-    private City city;
     private RegisterActivity activity;
     private int code;
 
     // Constructor
-    public RegisterAsync(RegisterActivity activity, City city){
+    public CreateUserAsync(RegisterActivity activity){
         this.activity = activity;
-        this.city = city;
     }
 
     // prétraitement de l'appel
@@ -57,7 +55,7 @@ public class RegisterAsync extends AsyncTask<User, Void, User> { //Type donnée 
 
             OutputStream os = connection.getOutputStream();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            String postParams ="nomVille="+city.getNameCity()+"&pseudo="+user.getPseudo()+"&motDePasse="+user.getPassword()+"&sexe="+user.getSex();
+            String postParams = "pseudo="+user.getPseudo()+"&email="+user.getEmail()+"&motDePasse="+user.getPassword()+"&sexe="+user.getSex()+"&actif="+user.getActive()+"&ville="+user.getCity().getNameCity()+"&cp="+user.getCity().getCp();
             writer.write(postParams);
             writer.flush();
             writer.close(); // On ferme le buffer

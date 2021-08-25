@@ -18,6 +18,7 @@
     <string name="cityName">Ville</string>
     <string name="toastErrorName">Une erreur est survenue !</string>
     <string name="toastErrorPseudoExistName">Pseudo déjà présent !</string>
+    <string name="toastErrorEmailExistName">Email déjà présent !</string>
     <string name="toastErrorTitleExistName">Titre déjà présent !</string>
     <string name="toastErrorFormName">Veuillez remplir tous les champs !</string>
     <string name="toastErrorPasswordName">Mot de passe différent !</string>
@@ -49,6 +50,12 @@
     <string name="yesName">Oui</string>
     <string name="noName">Non</string>
     <string name="spinnerGenderName">Choix sexe :</string>
+    <string name="postalCodeName">Code postal</string>
+    <string name="emailRegexName">Email invalide</string>
+    <string name="conditionsName">J\'ai lu et compris les conditions</string>
+    <string name="errorConditionsName">Veuillez accepter les conditions</string>
+    <string name="errorForm">Ce champ ne peut pas etre vide !</string>
+    <string name="errorPostalCode">Veuillez entrer un numéro !</string>
     <string-array name="listOfCity">
         <item>Charleroi</item>
         <item>Namur</item>
