@@ -110,9 +110,9 @@ public class User implements Serializable {
             user.setSex(obj.getString("sexe"));
             user.setEmail(obj.getString("email"));
             user.setActive(obj.getInt("actif"));
-            city.setId(obj.getInt("idCity"));
-            city.setNameCity(obj.getString("ville"));
-            city.setCp(obj.getInt("cp"));
+            city.setId(obj.getInt("idVille"));
+            /*city.setNameCity(obj.getString("ville"));
+            city.setCp(obj.getInt("cp"));*/
             try{
                 JSONArray listSubject = obj.getJSONArray("listeSujet");
                 user.setListSubject(Subject.getJsonList(listSubject));
@@ -133,15 +133,16 @@ public class User implements Serializable {
     }
 
     public void getJson(JSONObject json)throws JSONException{
+        City city = new City();
         this.setId(json.getInt("id"));
         this.setPseudo(json.getString("pseudo"));
         this.setPassword(json.getString("motDePasse"));
         this.setSex(json.getString("sexe"));
         this.setEmail(json.getString("email"));
         this.setActive(json.getInt("actif"));
-        this.getCity().setId(json.getInt("idCity"));
-        this.getCity().setNameCity(json.getString("ville"));
-        this.getCity().setCp(json.getInt("cp"));
+        city.setId(json.getInt("idVille"));
+        /*this.getCity().setNameCity(json.getString("ville"));
+        this.getCity().setCp(json.getInt("cp"));*/
         try{
             JSONArray array = json.getJSONArray("listeSujet");
             this.setListSubject(Subject.getJsonList(array));

@@ -116,15 +116,15 @@
         <CheckBox
             android:id="@+id/conditions"
             android:layout_width="260dp"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:backgroundTint="#D500F9"
             android:buttonTint="#D500F9"
             android:text="@string/conditionsName"/>
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/flow7"
-            android:layout_width="360dp"
-            android:layout_height="80dp"
+            android:layout_width="359dp"
+            android:layout_height="92dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginEnd="32dp"
@@ -153,8 +153,8 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <androidx.constraintlayout.helper.widget.Flow
-            android:layout_width="333dp"
-            android:layout_height="181dp"
+            android:layout_width="336dp"
+            android:layout_height="213dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
