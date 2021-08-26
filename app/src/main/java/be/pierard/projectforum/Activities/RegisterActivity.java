@@ -31,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText passwordVerif;
     private EditText nameCity;
     private EditText strCp;
+    Spinner spinGender;
+    Spinner spinCity;
     public List<City> list;
 
     // Valider inscription
@@ -46,8 +48,8 @@ public class RegisterActivity extends AppCompatActivity {
                 if(!checkData()){
                     int cp = Global.tryParseInt(strCp.getText().toString());
                     try{
-                        city = new City(nameCity.getText().toString(), cp);
-                        user = new User(pseudo.getText().toString(), password.getText().toString(), textGender, email.getText().toString().toLowerCase(), city);
+                        city = new City(spinCity.getSelectedItem().toString(), cp);
+                        user = new User(pseudo.getText().toString(), password.getText().toString(), spinGender.getSelectedItem().toString(), email.getText().toString().toLowerCase(), city);
                         // Tâche asynchrone instancié dans le bouton ==> Execute va exécuter les méthodes du RegisterAsync
                         new CreateUserAsync(RegisterActivity.this).execute(user);
                     }
@@ -73,6 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
         passwordVerif = findViewById(R.id.passwordConfirmTextRegister);
         nameCity = findViewById(R.id.cityTextRegister);
         strCp = findViewById(R.id.postalCodeTextRegister);
+        spinGender = findViewById(R.id.spinGender);
+        spinCity = findViewById(R.id.spinCity);
 
         // Test des différents champs
         if(pseudo.getText().toString().isEmpty()){
@@ -136,41 +140,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return error;
-    }
-
-    // Récupérer ville
-    public void populateSpinnerCity(){
-        Spinner spinner = findViewById(R.id.spinCity);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            EditText txtNameCity;
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Object item = parent.getItemAtPosition(pos);
-                // Obtenir élément spinner
-                String textCity = item.toString();
-                // Compléter champs texte ville
-                txtNameCity = findViewById(R.id.cityTextRegister);
-                txtNameCity.setText(textCity);
-            }
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
-
-    // Récupérer genre
-    public void populateSpinnerGender(){
-        Spinner spinner = findViewById(R.id.spinGender);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Object item = parent.getItemAtPosition(pos);
-                // Obtenir élément spinner
-                textGender = item.toString();
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     // Retour menu principal
@@ -253,9 +222,5 @@ public class RegisterActivity extends AppCompatActivity {
         Button btnBack;
         btnBack = (Button) findViewById(R.id.btnBackRegister);
         btnBack.setOnClickListener(backListener);
-
-        // Chargement de certains éléments à la création de l'activité
-        populateSpinnerCity();
-        populateSpinnerGender();
     }
 }
