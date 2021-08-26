@@ -68,6 +68,5 @@
     <string-array name="listOfGender">
         <item>Homme</item>
         <item>Femme</item>
-        <item>Autre</item>
     </string-array>
 </resources>

@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
             // Vérifier la validation des champs
             if(!checkData()){
                 try{
-                    new LoginAsync(LoginActivity.this).execute(email.getText().toString(), password.getText().toString());
+                    new LoginAsync(LoginActivity.this).execute(email.getText().toString().toLowerCase(), password.getText().toString());
                 }
                 catch (Exception e){
                     Global.generateToast(getResources().getString(R.string.toastErrorName), LoginActivity.this);

@@ -26,7 +26,7 @@ public class Message implements Serializable, Comparable<Message> {
     public Message(String content, Date dateMessage, User user){
         this.content = content;
         this.dateMessage = dateMessage;
-        user = this.user;
+        this.user = user;
     }
 
     // GET/SET

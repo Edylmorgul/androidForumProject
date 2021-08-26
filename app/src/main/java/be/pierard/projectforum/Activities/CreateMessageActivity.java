@@ -52,7 +52,7 @@ public class CreateMessageActivity extends AppCompatActivity {
             }
             textView.setTextSize(15);
             textView.setMovementMethod(new ScrollingMovementMethod());
-            textView.setText(getResources().getString(R.string.authorName) + " " + m.getUser().getPseudo() + " : " + m.getContent() + " " + " DATE : " + m.getDateMessage());
+            textView.setText(" DATE : " + m.getDateMessage() + " " + getResources().getString(R.string.authorName) + " " + m.getUser().getPseudo() + " : " + m.getContent());
             layout.addView(textView);
             textView.setId(i);
             i++;
