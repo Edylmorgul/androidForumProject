@@ -73,16 +73,14 @@
 
         <Button
             android:id="@+id/btnValidateMessageMessage"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
+            style="@style/CustomButton"
             android:text="@string/validateName"
             tools:layout_editor_absoluteX="99dp"
             tools:layout_editor_absoluteY="887dp" />
 
         <Button
             android:id="@+id/btnBackCreateMessage"
-            android:layout_width="120dp"
-            android:layout_height="60dp"
+            style="@style/CustomButton"
             android:text="@string/backName"
             tools:layout_editor_absoluteX="51dp"
             tools:layout_editor_absoluteY="923dp" />

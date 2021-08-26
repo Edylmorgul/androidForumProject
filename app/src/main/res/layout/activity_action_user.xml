@@ -59,24 +59,21 @@
 
         <Button
             android:id="@+id/btnCreateSubject"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            style="@style/CustomButton"
             android:text="@string/addSubjectName"
             tools:layout_editor_absoluteX="153dp"
             tools:layout_editor_absoluteY="266dp" />
 
         <Button
             android:id="@+id/btnListSubject"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            style="@style/CustomButton"
             android:text="@string/listSubjectName"
             tools:layout_editor_absoluteX="151dp"
             tools:layout_editor_absoluteY="334dp" />
 
         <Button
             android:id="@+id/btnDisconnectActionUser"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            style="@style/CustomButton"
             android:text="@string/disconnectName"
             tools:layout_editor_absoluteX="151dp"
             tools:layout_editor_absoluteY="402dp" />

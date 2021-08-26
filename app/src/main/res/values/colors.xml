@@ -36,7 +36,7 @@
     </style>
 
     <style name="CustomButton">
-        <item name="android:layout_width">160dp</item>
-        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">60dp</item>
     </style>
 </resources>

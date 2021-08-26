@@ -74,11 +74,10 @@ public class Subject implements Serializable {
         return list;
     }
 
-    public Subject getJson(JSONObject json)throws JSONException {
-        Subject subject = new Subject();
-        subject.setId(json.getInt("id"));
-        subject.setTopicTitle(json.getString("titreSujet"));
-        subject.setDescription(json.getString("description"));
+    public void getJson(JSONObject json)throws JSONException {
+        this.setId(json.getInt("id"));
+        this.setTopicTitle(json.getString("titreSujet"));
+        this.setDescription(json.getString("description"));
 
         try{
             JSONArray array = json.getJSONArray("listeMessage");
@@ -87,6 +86,5 @@ public class Subject implements Serializable {
         catch (JSONException e){
             this.setListMessage(null);
         }
-        return subject;
     }
 }

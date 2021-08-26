@@ -46,8 +46,7 @@
 
         <Button
             android:id="@+id/btnValidateLogin"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
+            style="@style/CustomButton"
             android:text="@string/validateName"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="564dp" />
@@ -69,8 +68,7 @@
 
         <Button
             android:id="@+id/btnBackLogin"
-            android:layout_width="184dp"
-            android:layout_height="71dp"
+            style="@style/CustomButton"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="32dp"
